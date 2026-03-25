@@ -2,10 +2,14 @@ name: Sync Tailscale ACLs
 on:
   push:
     branches: [main]
-    paths: [policy.hujson]
+    paths:
+      - policy.hujson
+      - .github/workflows/sync-acls.yaml
   pull_request:
     branches: [main]
-    paths: [policy.hujson]
+    paths:
+      - policy.hujson
+      - .github/workflows/sync-acls.yaml
 
 jobs:
   sync-acls:
