@@ -1,0 +1,50 @@
+{
+    "groups": {
+        "group:guests": ["eafalck@gmail.com"],
+    },
+
+    "tagOwners": {
+        "tag:inner-sanctum": ["autogroup:admin"],
+        "tag:subnet-router": ["autogroup:admin"],
+        "tag:guest":         ["autogroup:admin"],
+    },
+
+    "acls": [
+        {
+            "action": "accept",
+            "src":    ["amerenda@github"],
+            "dst":    ["*:*"],
+        },
+        {
+            "action": "accept",
+            "src":    ["tag:inner-sanctum"],
+            "dst":    ["*:*"],
+        },
+        {
+            "action": "accept",
+            "src":    ["tag:guest", "group:guests"],
+            "dst":    ["tag:subnet-router:3002"],
+        },
+        {
+            "action": "accept",
+            "src":    ["tag:guest", "group:guests"],
+            "dst":    ["10.100.20.0/24:80,443,3000,3001,8080,8443,8888,9000,9090"],
+        },
+    ],
+
+    "autoApprovers": {
+        "routes": {
+            "10.100.20.0/24": ["tag:inner-sanctum"],
+        },
+        "exitNode": ["amerenda@github"],
+    },
+
+    "ssh": [
+        {
+            "action": "accept",
+            "src":    ["amerenda@github"],
+            "dst":    ["amerenda@github"],
+            "users":  ["autogroup:nonroot"],
+        },
+    ],
+}
