@@ -36,7 +36,7 @@
         "routes": {
             "10.100.20.0/24": ["tag:inner-sanctum"],
         },
-        "exitNode": ["amerenda@github"],
+        "exitNode": ["amerenda@github", "tag:inner-sanctum"],
     },
 
     "ssh": [
